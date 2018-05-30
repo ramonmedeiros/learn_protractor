@@ -1,14 +1,18 @@
 // libs
 const { Given, When, Then } = require('cucumber');
-const assert = require('assert');
 const EC = protractor.ExpectedConditions;
+
+// enable chai as assert
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+var expect = chai.expect;
 
 // elements
 var firstNumber = element(by.model('first'));
 var secondNumber = element(by.model('second'));
 var goButton = element(by.id('gobutton'));
-var latestResult = element(by.xpath("//td[contains(@class, 'ng-binding')]"));
-var ng_binding = element(by.className('ng-binding'));
+var latestResult = element(by.xpath("//h2[contains(@class, 'ng-binding')]"));
 
 // helper functions
 function typeInput(value, element) {
@@ -22,7 +26,7 @@ function operation(op, locator) {
 // steps definitions
 Given('Open calculator', function (callback) {
     browser.get("/protractor-demo")
-    .then(callback);
+        .then(callback);
 });
 
 When('Do {int} + {int}', function (number, number2, callback) {
@@ -31,12 +35,12 @@ When('Do {int} + {int}', function (number, number2, callback) {
         .then(operation("+", "operator"))
         .then(typeInput(number2, secondNumber))
         .then(goButton.click());
-    browser.wait(latestResult.isPresent())
-        .then(callback);
+    expect(latestResult.isPresent())
+        .and.notify(callback);
 });
 
 Then('I end up with {int}', function (number, callback) {
-     assert.equal(latestResult.getText(), number)
-        .then(callback);
+     expect(latestResult.getText()).to.eventually.equal(number.toString())
+        .and.notify(callback); 
 }); 
 
