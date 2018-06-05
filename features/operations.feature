@@ -5,10 +5,23 @@ Feature: Running with Protractor
 
     Scenario: 2 + 2 = 4
         Given Open calculator
-        When Do 2 + 2
+        When Do 2 '+' 2
         Then I end up with 4
 
     Scenario: 2 - 2 = 0
         Given Open calculator
-        When Do 2 - 2
+        When Do 2 '-' 2
         Then I end up with 0
+
+    Scenario: 2 / 2 = 1
+        Given Open calculator
+        When Do 2 '/' 2
+        Then I end up with 1
+
+
+    Scenario: 2 * 2 = 4
+        Given Open calculator
+        When Do 2 '*' 2
+        Then I end up with 4
+
+  

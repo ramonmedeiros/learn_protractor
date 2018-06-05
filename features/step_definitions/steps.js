@@ -29,26 +29,15 @@ Given('Open calculator', function (callback) {
         .then(callback);
 });
 
-When('Do {int} + {int}', function (number, number2, callback) {
+When('Do {int} {string} {int}', function (number, op, number2, callback) {
     browser.wait(firstNumber.isPresent())
         .then(typeInput(number, firstNumber))
-        .then(operation("+", "operator"))
+        .then(operation(op, "operator"))
         .then(typeInput(number2, secondNumber))
         .then(goButton.click());
     expect(latestResult.isPresent())
         .and.notify(callback);
 });
-
-When('Do {int} - {int}', function (number, number2, callback) {
-    browser.wait(firstNumber.isPresent())
-        .then(typeInput(number, firstNumber))
-        .then(operation("-", "operator"))
-        .then(typeInput(number2, secondNumber))
-        .then(goButton.click());
-    expect(latestResult.isPresent())
-        .and.notify(callback);
-});
-
 
 Then('I end up with {int}', function (number, callback) {
      expect(latestResult.getText()).to.eventually.equal(number.toString())
