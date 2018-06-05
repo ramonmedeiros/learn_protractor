@@ -1,6 +1,5 @@
 // libs
 const { Given, When, Then } = require('cucumber');
-const EC = protractor.ExpectedConditions;
 
 // enable chai as assert
 var chai = require('chai');
