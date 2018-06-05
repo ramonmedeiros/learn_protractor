@@ -39,6 +39,17 @@ When('Do {int} + {int}', function (number, number2, callback) {
         .and.notify(callback);
 });
 
+When('Do {int} - {int}', function (number, number2, callback) {
+    browser.wait(firstNumber.isPresent())
+        .then(typeInput(number, firstNumber))
+        .then(operation("-", "operator"))
+        .then(typeInput(number2, secondNumber))
+        .then(goButton.click());
+    expect(latestResult.isPresent())
+        .and.notify(callback);
+});
+
+
 Then('I end up with {int}', function (number, callback) {
      expect(latestResult.getText()).to.eventually.equal(number.toString())
         .and.notify(callback); 

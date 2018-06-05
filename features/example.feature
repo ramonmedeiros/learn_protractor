@@ -7,3 +7,8 @@ Feature: Running with Protractor
         Given Open calculator
         When Do 2 + 2
         Then I end up with 4
+
+    Scenario: 2 - 2 = 0
+        Given Open calculator
+        When Do 2 - 2
+        Then I end up with 0
