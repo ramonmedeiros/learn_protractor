@@ -4,12 +4,13 @@
   "description": "",
   "main": "cucumber.conf.js",
   "dependencies": {
+    "assert-promise": "^0.0.3",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "assert-promise": "^0.0.3",
     "cucumber": "^4.2.1",
+    "protractor": "^5.3.2",
     "protractor-cucumber-framework": "^5.0.0",
-    "protractor": "^5.3.2"
+    "webdriver-manager": "^12.0.6"
   },
   "devDependencies": {},
   "scripts": {
