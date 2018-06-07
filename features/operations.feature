@@ -1,7 +1,6 @@
-Feature: Running with Protractor
-    As a user of Protractor
-    I should be able to use Cucumber
-    In order to run my E2E tests
+Feature: Mathematical Operations with calculator
+    As a user of calculator
+    I should be able to use all operations
 
     @sum
     Scenario: 2 + 2 = 4
